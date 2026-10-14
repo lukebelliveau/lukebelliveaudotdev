@@ -64,10 +64,10 @@ export default function Home() {
               ci/cd & automation
             </h2>
             <p className="mt-2 w-full text-base text-zinc-600 dark:text-zinc-200">
-              GitHub Actions for CI pipelines, Harness for complex deployment
-              orchestration, ArgoCD for GitOps. I&apos;ve also worked
-              extensively with Jenkins, Spinnaker, GoCD, and GitLab CI at
-              enterprise scale. Strong believer in GitOps - infrastructure
+              Very familiar with Buildkite, Argo, GitHub Actions, GitLab CI.
+              Also familiar with Harness CI, but against my will. I&apos;ve
+              worked extensively with Jenkins, Spinnaker, and GoCD at enterprise
+              scale. Strong believer in GitOps - infrastructure
               state, application config, and secrets all tracked in Git with
               automated sync to clusters.
             </p>

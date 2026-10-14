@@ -112,92 +112,85 @@ export default function Projects() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             selected works
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-200">
-            Recent platform engineering engagements, plus a few smaller projects
-            from my consulting work.
-          </p>
         </header>
 
         <div className="mt-16 max-w-3xl">
           <FeaturedProject
-            title="Gamification Platform"
-            year="2024-present"
-            tech="Terraform, GCP, Kubernetes, Istio, Harness, ArgoCD, Helm, GitOps, Workload Identity, Cloud SQL, Python, FastAPI, Liquibase"
+            title="Agentic Infrastructure Platform"
+            year="2025-present"
+            tech="TypeScript, Python, Terraform, Kubernetes, Argo CD, GCP, AWS, Buildkite, Harness, Claude"
           >
             <p>
-              What started as a greenfield Platform in a Box — a portable
-              developer platform that takes one terraform apply to bootstrap,
-              with pipelines handling everything after — has spent the last
-              several months being grafted onto the live infrastructure of a
-              large enterprise. The platform now powers their gamification
-              initiative, with the developer contract intact.
+              Building a developer &quot;platform in a box&quot;, making it easy
+              to build your organization on Platform Engineering best
+              principles. A single installation sets up everything application teams need to
+              ship and run services: cloud infrastructure, Kubernetes clusters,
+              CI/CD pipelines, GitOps, logging and alerting, all inside the
+              organization&apos;s own cloud accounts.
             </p>
             <p>
-              The platform is built around a single principle: app teams
-              declare what they need in a platform-manifest.yml, and the
-              platform produces everything else. Database, KMS keys, secrets,
-              service account, DNS, ingress, dual-region rollout, GitOps state
-              — all derived from one file in their repo. Push to main and the
-              full path-to-prod runs: tests, build, scan, provision infra,
-              deploy, e2e. No tickets, no waiting, no asking other teams.
+              Teams describe each application in one manifest file: whether it
+              is a web service, background worker or serverless function, and
+              which databases, caches, message queues and secrets it needs. The
+              platform provisions those resources and generates the delivery
+              pipeline. Every push is tested, security scanned and deployed
+              through dev, staging and production, with approval gates and
+              verification that the new version is running.
             </p>
             <p>
-              The integration challenge was preserving that contract while the
-              substrate underneath got replaced. The original was mine — GCP
-              projects, clusters, DNS, Harness org, Artifact Registry, built
-              greenfield. The replacement is theirs: shared multi-tenant
-              clusters, mandatory image registry, Harness runner identity,
-              Bitbucket, Istio mesh policies, security scanners (Mend SCA,
-              Falcon IaC, Gitleaks), OPA policy gates, shared Helm charts,
-              public ingress on a shared host. A pod now runs in one GCP
-              project, authenticates via Workload Identity to a service account
-              in a second, and pulls its image from a third. App teams have to
-              know none of this.
+              An AI engineering agent is built into the platform. When an alert
+              fires, it investigates across the code, build history, logs and
+              live systems, then prepares and tests a fix and opens a pull
+              request for review. It also patches vulnerable dependencies,
+              reviews pull requests and works on changes that span multiple
+              repositories.
+            </p>
+          </FeaturedProject>
+
+          <FeaturedProject
+            title="Gamification Platform"
+            year="2025-2026"
+            tech="Terraform, GCP, Kubernetes, Istio, Harness, ArgoCD, Helm, Cloud SQL, Python, FastAPI"
+          >
+            <p>
+              Built the developer platform for a large enterprise&apos;s
+              gamification initiative. It began as Platform in a Box, a portable
+              platform that bootstraps with one terraform apply and leaves
+              everything after to pipelines, and was then migrated onto the
+              enterprise&apos;s live infrastructure.
             </p>
             <p>
-              The platform absorbed every constraint the enterprise imposed:
-              cross-project Workload Identity for cluster/identity/image
-              separation, dual-region delivery across us-central1 and us-east4,
-              an NGINX preview-auth sidecar for the shared public host, a
-              custom path-based public router that owns one VirtualService per
-              env/region (replacing an earlier per-app model that caused live
-              host collisions), local forks of two shared Helm charts to work
-              around upstream bugs in Workload Identity templating and Istio
-              API versioning, a constrained ArgoCD AppProject so config-repo
-              changes can&apos;t escape gamification namespaces, and a small
-              FastAPI service for runtime secret management. The
-              platform-manifest.yml an app team writes today does what it did
-              before — they just get more for free.
+              App teams declare what they need in a single platform-manifest.yml,
+              including database, secrets, DNS and ingress. The platform
+              provisions all of it, and every push to main runs the full path to
+              production: tests, build, security scans, infrastructure
+              provisioning, deployment and end-to-end tests. Teams ship without
+              filing tickets or waiting on other teams.
             </p>
             <p>
-              Today the platform runs a fleet of services through the same
-              shared pipeline, all defined by the same manifest contract:
-              Kotlin services for auth, game sessions, e-commerce gateway,
-              rewards, and gaming experience orchestration; a Node.js BFF; and
-              a browser game.
+              The core challenge was preserving that contract while the
+              infrastructure underneath it was replaced. The original GCP
+              projects, clusters and registry were swapped for the
+              enterprise&apos;s shared multi-tenant clusters, Istio mesh,
+              mandatory image registry, policy gates and security scanners. Each
+              service runs in one GCP project, authenticates as a service account
+              in a second, and pulls its image from a third, with none of that
+              exposed to app teams. The migration ran with zero downtime on both
+              sides, and apps already on the original platform moved over without
+              manifest changes.
             </p>
             <p>
-              The migration ran zero-downtime on both sides — the original
-              platform kept serving its existing apps throughout, and the
-              enterprise&apos;s existing infrastructure was never disrupted.
-              Apps already running on the original platform onboarded to the
-              integrated one with no manifest changes.
-            </p>
-            <p>
-              The product launched in June 2026. In its first week, the
-              platform served 5.8 million HTTP requests through the service
-              mesh at a 99.986% success rate, peaking at 9,850 requests per
-              minute — 97,000 game sessions from nearly 90,000 unique
-              customers, with all 14 production deployments healthy across
-              both regions throughout. Reported CRM data showed tens of
-              thousands of game interactions and measurable purchase
-              conversion after game engagement.
+              The platform hosts the product&apos;s Kotlin backend services, a
+              Node.js BFF and a browser game. The product launched in June 2026,
+              and in its first week the platform served 5.8 million requests at a
+              99.986% success rate across roughly 97,000 game sessions from
+              nearly 90,000 customers.
             </p>
           </FeaturedProject>
 
           <FeaturedProject
             title="Robotics Data Platform"
-            year="2023-2024"
+            year="2024-2025"
             tech="Python, FastAPI, PostgreSQL, RabbitMQ, Terraform, AWS, GitHub Actions"
           >
             <p>
@@ -231,7 +224,7 @@ export default function Projects() {
 
           <FeaturedProject
             title="Wendy's Digital"
-            year="2022-2023"
+            year="2022-2024"
             tech="React, Next.js 14, TypeScript, Redux, Zustand, Docker, Kubernetes, ArgoCD, GitLab CI, GCP"
           >
             <p>

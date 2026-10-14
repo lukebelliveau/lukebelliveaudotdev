@@ -170,13 +170,18 @@ export default function About() {
                 PostgreSQL, Terraform, delivered over ~8 months.
               </p>
               <p>
-                Currently, I&apos;m building and operating a cloud-native
-                platform on GCP that powers a large enterprise&apos;s
-                gamification product - Terraform, Kubernetes, GitOps with
-                ArgoCD, dual-region delivery, and end-to-end observability.
-                The product launched in June 2026, with the platform serving
-                5.8 million requests at a 99.986% success rate in its first
-                week.
+                After that, I built the cloud-native platform on GCP behind a
+                large enterprise&apos;s gamification product - Terraform,
+                Kubernetes, GitOps with ArgoCD, dual-region delivery, and
+                end-to-end observability. The product launched in June 2026,
+                with the platform serving 5.8 million requests at a 99.986%
+                success rate in its first week.
+              </p>
+              <p>
+                Today I&apos;m building an agentic infrastructure platform.
+                Applications declare what they need, the platform generates and
+                runs their infrastructure and delivery, and an engineering agent
+                investigates alerts and prepares tested fixes for review.
               </p>
               <p>
                 When I&apos;m not coding, you might find me snowboarding or

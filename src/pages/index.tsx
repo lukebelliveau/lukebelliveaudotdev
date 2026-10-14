@@ -135,11 +135,14 @@ export default function Home() {
               engineers can ship with confidence.
             </p>
             <p className="mt-6 text-base text-zinc-600 dark:text-zinc-200">
-              Most recently, I designed and launched a dual-region GCP platform
-              powering a large enterprise&apos;s gamification product — 5.8
-              million requests at 99.986% success in its launch week. Before
-              that, I led the architecture of a data platform for an autonomous
-              robotics company. Here are some tools I work with:
+              I&apos;m currently building an agentic infrastructure platform: a
+              platform in a box that takes applications from source code to
+              production, with an AI engineering agent that responds to alerts
+              and prepares fixes. Previously, I built the platform behind a large
+              enterprise&apos;s gamification product, which served 5.8 million
+              requests at 99.986% success in its launch week, and led the
+              architecture of a data platform for an autonomous robotics
+              company. Here are some tools I work with:
             </p>
           </div>
           <div className="mt-32 hidden w-full basis-1/2 flex-col place-content-center lg:block lg:basis-6/12 xl:basis-5/12 2xl:basis-4/12">
