@@ -19,7 +19,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/style.css" />
-    <script defer data-domain="lukebelliveau.dev" src="https://plausible.io/js/script.js"></script>
   </head>
   <body>
     <div class="wrap">
@@ -140,13 +139,22 @@
             The solution was a platform organized around domains with clear
             ownership, bilateral API contracts (consumer-specific APIs rather
             than one shared API), and abstraction layers freeing domain owners
-            from infrastructure concerns. The platform includes an edge proxy
-            with write buffering and read caching for offline factory floor
-            operation, syncing to cloud when bandwidth allows.
+            from infrastructure concerns. Consumers authenticate once, then get
+            route-level access approved by each domain's owner. The platform
+            includes an edge proxy with write buffering and read caching for
+            offline factory floor operation, syncing to cloud when bandwidth
+            allows.
+          </p>
+          <p>
+            Data now reaches AI model training and robot operations in real
+            time, replacing overnight batch jobs that shipped it to the cloud.
+            Mean time to discover and resolve incidents dropped by 80%, and the
+            platform is designed for a 100x increase in data volume.
           </p>
           <p>
             Delivered via 3-week POC, 6-month build, and 3-month extension. The
-            platform now powers production robotics operations.
+            platform now powers production robotics operations. Read the
+            <a href="https://navalia.io/work/accelerating-path-robotics-ai-driven-growth-with-a-modern-data-platform/">case study</a>.
           </p>
           <p class="label tech">
             Python, FastAPI, PostgreSQL, RabbitMQ, Terraform, AWS, GitHub Actions
