@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects - Luke Belliveau</title>
+    <meta
+      name="description"
+      content="Luke Belliveau's project page. Platform engineering work including data platforms, cloud infrastructure, and enterprise web applications."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projects - Luke Belliveau" />
+    <meta
+      property="og:description"
+      content="Luke Belliveau's project page. Platform engineering work including data platforms, cloud infrastructure, and enterprise web applications."
+    />
+    <meta property="og:image" content="https://i.ibb.co/CBbfLQp/og-image-lukebelliveau.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/style.css" />
+    <script defer data-domain="lukebelliveau.dev" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="home" href="/"><img src="/images/avatar.jpg" alt="" width="28" height="28" />luke belliveau</a>
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="/projects/" aria-current="page">projects</a></li>
+            <li><a href="/background/">background</a></li>
+            <li><a href="/tools/">tools</a></li>
+            <li><a href="/contact/">contact</a></li>
+            <li><a href="/files/Luke_Belliveau_CV.pdf">cv ↗</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h1>selected works</h1>
+
+        <article class="work">
+          <header class="work-head">
+            <h2>Agentic Infrastructure Platform</h2>
+            <span class="label">2025-present</span>
+          </header>
+          <p>
+            Building a developer "platform in a box", making it easy to build
+            your organization on Platform Engineering best principles. A single
+            installation sets up everything application teams need to ship and
+            run services: cloud infrastructure, Kubernetes clusters, CI/CD
+            pipelines, GitOps, logging and alerting, all inside the
+            organization's own cloud accounts.
+          </p>
+          <p>
+            Teams describe each application in one manifest file: whether it is
+            a web service, background worker or serverless function, and which
+            databases, caches, message queues and secrets it needs. The platform
+            provisions those resources and generates the delivery pipeline.
+            Every push is tested, security scanned and deployed through dev,
+            staging and production, with approval gates and verification that
+            the new version is running.
+          </p>
+          <p>
+            An AI engineering agent is built into the platform. When an alert
+            fires, it investigates across the code, build history, logs and live
+            systems, then prepares and tests a fix and opens a pull request for
+            review. It also patches vulnerable dependencies, reviews pull
+            requests and works on changes that span multiple repositories.
+          </p>
+          <p class="label tech">
+            TypeScript, Python, Terraform, Kubernetes, Argo CD, GCP, AWS,
+            Buildkite, Harness, Claude
+          </p>
+        </article>
+
+        <article class="work">
+          <header class="work-head">
+            <h2>Gamification Platform</h2>
+            <span class="label">2025-2026</span>
+          </header>
+          <p>
+            Built the developer platform for a large enterprise's gamification
+            initiative. It began as Platform in a Box, a portable platform that
+            bootstraps with one terraform apply and leaves everything after to
+            pipelines, and was then migrated onto the enterprise's live
+            infrastructure.
+          </p>
+          <p>
+            App teams declare what they need in a single YAML file, smaller than
+            a boilerplate package.json. The platform provisions all of it, and every push to main runs the full path to production:
+            tests, build, security scans, infrastructure provisioning, deployment
+            and end-to-end tests. Teams ship without filing tickets or waiting
+            on other teams.
+          </p>
+          <p>
+            The core challenge was preserving that contract while the
+            infrastructure underneath it was replaced. The original GCP
+            projects, clusters and registry were swapped for the enterprise's
+            shared multi-tenant clusters, Istio mesh, mandatory image registry,
+            policy gates and security scanners. The enterprise keeps clusters,
+            service identities and container images in separate GCP projects;
+            the platform wires each service across those boundaries, so app
+            teams never deal with them. The migration ran with zero downtime on both sides, and apps already on
+            the original platform moved over without manifest changes.
+          </p>
+          <p>
+            The platform hosts the product's Kotlin backend services, a Node.js
+            BFF and a browser game. The product launched in June 2026, and in
+            its first week the platform served 5.8 million requests at a 99.986%
+            success rate across roughly 97,000 game sessions from nearly 90,000
+            customers.
+          </p>
+          <p class="label tech">
+            Terraform, GCP, Kubernetes, Istio, Harness, ArgoCD, Helm, Cloud SQL,
+            Python, FastAPI
+          </p>
+        </article>
+
+        <article class="work">
+          <header class="work-head">
+            <h2>Robotics Data Platform</h2>
+            <span class="label">2024-2025</span>
+          </header>
+          <p>
+            Led architecture of a domain-driven data platform for autonomous
+            welding robots. The client's robots use 7-DoF arms with arc-welders
+            and computer vision, generating massive amounts of data from laser
+            scanners that produce point clouds and 3D models.
+          </p>
+          <p>
+            The core problem: as the company scaled, data management evolved
+            organically into tightly coupled "scraper-style" pipelines. Teams
+            faced a false choice between brittle systems that break on schema
+            changes, or slow systems requiring cross-team coordination for every
+            change. AI and robotics experts were spending more time debugging
+            pipelines than advancing core technologies.
+          </p>
+          <p>
+            The solution was a platform organized around domains with clear
+            ownership, bilateral API contracts (consumer-specific APIs rather
+            than one shared API), and abstraction layers freeing domain owners
+            from infrastructure concerns. The platform includes an edge proxy
+            with write buffering and read caching for offline factory floor
+            operation, syncing to cloud when bandwidth allows.
+          </p>
+          <p>
+            Delivered via 3-week POC, 6-month build, and 3-month extension. The
+            platform now powers production robotics operations.
+          </p>
+          <p class="label tech">
+            Python, FastAPI, PostgreSQL, RabbitMQ, Terraform, AWS, GitHub Actions
+          </p>
+        </article>
+
+        <article class="work">
+          <header class="work-head">
+            <h2>Wendy's Digital</h2>
+            <span class="label">2022-2024</span>
+          </header>
+          <p>
+            Full stack engineer on the web ordering platform for Wendy's, one of
+            the world's largest quick service restaurant chains with 7,000+
+            locations globally.
+          </p>
+          <p>
+            Served as liaison between the web development and platform
+            engineering teams during AWS to GCP migration. Implemented a
+            dual-repository sync pattern where the AWS repo remained source of
+            truth for application code while the GCP repo maintained
+            platform-specific configurations. The migration used single-image
+            multi-environment deployments with runtime configuration injection,
+            ArgoCD for GitOps, and template-based Nginx configuration.
+          </p>
+          <p>
+            Contributed to
+            <a href="https://www.wendys.com/blog/drive-thru-innovation-wendys-freshai">FreshAI</a>,
+            Wendy's AI-driven drive-thru ordering system built with Google
+            Cloud. FreshAI processes tens of thousands of orders daily across
+            hundreds of restaurants with 99% accuracy.
+          </p>
+          <p>
+            Kickstarted a modern Next.js 14 rewrite of the 318K-line ordering
+            application, introducing Server Components, Zustand state
+            management, and domain-driven architecture.
+          </p>
+          <p class="label tech">
+            React, Next.js 14, TypeScript, Redux, Zustand, Docker, Kubernetes,
+            ArgoCD, GitLab CI, GCP
+          </p>
+        </article>
+
+        <hr />
+
+        <h2>Other Projects</h2>
+        <ul class="small-work">
+          <li>
+            <h3><a href="https://www.zuut.co">ZUUT</a></h3>
+            <span class="label">2022 · zuut.co</span>
+            <p>
+              Full featured computer-aided-design tool for planning &amp;
+              executing cannabis grow operations. Features smooth, deep canvas
+              interactions and broad account management features. Check out the
+              builder, it's pretty fun to play around with.
+            </p>
+          </li>
+          <li>
+            <h3><a href="https://www.nuwavetech.com/prizm-gateway">Prizm API Gateway</a></h3>
+            <span class="label">2021 · nuwavetech.com</span>
+            <p>
+              A comprehensive API Gateway built to run on Nonstop servers. I
+              handled the development for all front-end, test automation, and
+              deployment code - from our inception in early 2021 to our
+              successful launch in 2022. The console product itself is
+              proprietary, but the link above provides some more context on what
+              this tool does.
+            </p>
+          </li>
+          <li>
+            <h3><a href="https://www.selenium.dev">Selenium.dev</a></h3>
+            <span class="label">2019 · selenium.dev</span>
+            <p>
+              Given a set of mockups, I delivered a speedy static website for
+              Selenium, a popular browser automation tool. Built with Jekyll and
+              Hugo.
+            </p>
+          </li>
+          <li>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.devilsdicegame.devilsdice&amp;ref=producthunt">Devil's Dice</a></h3>
+            <span class="label">2018 · play.google.com</span>
+            <p>
+              I was hired to build this exciting party game in 2018, where users
+              place a phone on the table and face various challenges based on the
+              roll of the dice. This app has a special place in my heart - a
+              year after its release, I was staying at a hostel in Slovakia, and
+              I noticed a group of people were playing the game in the kitchen!
+              It remains active today, and enjoys a 4.5 star rating on the Google
+              Play Store with over 10,000 downloads.
+            </p>
+          </li>
+          <li>
+            <h3><a href="https://www.brckhmptn.com">SATURATION</a></h3>
+            <span class="label">2017 · brckhmptn.com</span>
+            <p>
+              Official application for world-famous boyband BROCKHAMPTON,
+              designed to release music videos and other exclusive goodies before
+              their general release to external platforms. With over 10,000
+              downloads, SATURATION enjoyed a rating of 5 stars on the Google
+              Play store, where it was active from 2017-2019.
+            </p>
+          </li>
+        </ul>
+      </main>
+
+      <footer class="site-footer">
+        <ul>
+          <li><a href="https://github.com/lukebelliveau">github</a></li>
+          <li><a href="https://www.linkedin.com/in/lukebelliveau/">linkedin</a></li>
+          <li><a href="mailto:hi@lukebelliveau.dev">hi@lukebelliveau.dev</a></li>
+        </ul>
+        <span>© 2026 Luke Belliveau</span>
+      </footer>
+    </div>
+  </body>
+</html>

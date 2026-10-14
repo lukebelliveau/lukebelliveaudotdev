@@ -1,28 +1,27 @@
 # lukebelliveaudotdev
 
-Personal website, developed and deployed from this repository.
+Personal website at https://www.lukebelliveau.dev. Plain HTML and CSS, no
+build step.
 
 ## Local development
 
-Use Node.js 22, then run:
+Serve the site directory:
 
-    npm ci
-    npm run dev
+    python3 -m http.server 3001 --bind 127.0.0.1 --directory site
+
+Then open http://127.0.0.1:3001/. Links and assets use root paths, so open the
+site through a server rather than as files.
+
+## Layout
+
+- `site/` is published as-is. Each page is an `index.html` in its own directory,
+  so URLs stay `/projects/`, `/background/` and so on.
+- `site/style.css` holds every style. Text uses the system font, and colors
+  follow the visitor's system light or dark setting.
+- The header and footer are repeated in each page. Change them everywhere when
+  editing navigation.
 
 ## Deployment
 
-GitHub Actions builds the site and deploys it to GitHub Pages on pushes to main.
-The workflow gets the site URL and base path from the repository's Pages
-settings, so both a custom domain and a repository subpath are supported.
-
-To create a static build locally:
-
-    npm run export
-
-The result is in out/. Next.js 13.0.2 uses a separate next export step. Images
-are served directly, and page directories support direct links on GitHub Pages.
-For a subpath build, set NEXT_PUBLIC_BASE_PATH before running the export.
-
-Pull requests run the same build without publishing. Hosting changes are in
-.github/workflows/pages.yml; application code and public assets are in src/
-and public/.
+Pushing to main runs `.github/workflows/pages.yml`, which uploads `site/` to
+GitHub Pages. The custom domain is set in the repository's Pages settings.

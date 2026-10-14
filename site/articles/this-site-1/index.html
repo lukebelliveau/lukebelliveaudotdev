@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Publishing a Website with TypeScript, Next.js and Vercel - Luke Belliveau</title>
+    <meta
+      name="description"
+      content="The first in a series of blog posts about how I made this blog that hosts these blog posts. Covers "
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/style.css" />
+    <script defer data-domain="lukebelliveau.dev" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="home" href="/"><img src="/images/avatar.jpg" alt="" width="28" height="28" />luke belliveau</a>
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="/projects/">projects</a></li>
+            <li><a href="/background/">background</a></li>
+            <li><a href="/tools/">tools</a></li>
+            <li><a href="/contact/">contact</a></li>
+            <li><a href="/files/Luke_Belliveau_CV.pdf">cv ↗</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <p class="label"><a href="/articles/">← articles</a> · <time datetime="2023-01-14">January 14, 2023</time></p>
+          <h1>Publishing a Website with TypeScript, Next.js and Vercel</h1>
+          <p class="subtitle">Making this Website: Part 1</p>
+
+          <p>
+            Welcome! This is a brief tutorial about how to create a simple
+            TypeScript website with Next.js and publish it to Vercel. This is
+            not a deep dive - we won't be digging into complex routing features
+            or making the perfect layout with CSS. This is more of a checklist
+            with steps and resources, with plenty of room for your own
+            creativity &amp; exploration to come through. We'll cover:
+          </p>
+          <ul>
+            <li>Installing Next.js, local development</li>
+            <li>Pages, linking, routing</li>
+            <li>Deploying to Vercel</li>
+          </ul>
+
+          <h4>Topics covered</h4>
+          <ul>
+            <li>Installing Next.js and setting up for local development</li>
+            <li>Next.js Page files</li>
+            <li>Next.js <code>&lt;Link&gt;</code>, <code>&lt;Head&gt;</code> components</li>
+            <li>Deploying to Vercel</li>
+          </ul>
+
+          <h4>Prerequisites</h4>
+          <p>Familiarity with:</p>
+          <ul>
+            <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+            <li><a href="https://beta.reactjs.org/">React</a></li>
+          </ul>
+          <p>You should have installed:</p>
+          <ul>
+            <li><a href="https://www.npmjs.com/">npm</a></li>
+            <li><a href="https://git-scm.com/">git</a> (and have some familiarity with GitHub)</li>
+          </ul>
+
+          <h4>Primary Resources</h4>
+          <ul>
+            <li><a href="https://nextjs.org/docs">Next.js Documentation</a></li>
+            <li><a href="https://vercel.com/docs">Vercel Documentation</a></li>
+          </ul>
+
+          <h2>Installation</h2>
+          <p>
+            Open your terminal of choice and run the following command to create
+            a new Next.js project in your current directory:
+          </p>
+          <p><code>~/ROBOT $ npx create-next-app@latest</code></p>
+          <p>
+            You'll go through some choices here, my preferences are highlighted
+            in the output below. Choose all the defaults,
+            <strong>except select "Yes" on the 4th question about the
+            <code>src/</code> folder</strong>. Let the tool do its thing. You'll
+            see some output like this:
+          </p>
+          <pre><code>Need to install the following packages:
+  create-next-app@13.1.2
+Ok to proceed? (y) y
+✔ What is your project named? … my-app
+✔ Would you like to use TypeScript with this project? … No / _Yes_
+✔ Would you like to use ESLint with this project? … No / _Yes_
+✔ Would you like to use `src/` directory with this project? … No / _Yes_
+✔ Would you like to use experimental `app/` directory with this project? … _No_ / Yes
+Creating a new Next.js app in /Users/lukebelliveau/ROBOT/my-app.
+# ...
+Success! Created my-app at /Users/lukebelliveau/ROBOT/my-app</code></pre>
+          <p class="note">
+            The step about the <code>/app</code> directory is related to
+            <a href="https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory">experimental features in Next.js 13.</a>
+          </p>
+
+          <p>Next, navigate to the project folder and start up the dev server:</p>
+          <p><code>~/ROBOT $ cd my-app</code></p>
+          <p><code>~/ROBOT/my-app $ npm run dev</code></p>
+
+          <p>
+            If you see the Next.js intro page, you're good to go! If not,
+            <a href="mailto:hi@lukebelliveau.dev">shoot me a message</a> and
+            I'll take a look.
+          </p>
+          <p><img src="/images/blog/nextjs-welcome.png" alt="Next.js Welcome page" style="width: 75%" loading="lazy" /></p>
+
+          <h2>Page files</h2>
+
+          <h3>Adding a new page</h3>
+          <p>
+            Let's add some new pages to share some information about ourselves.
+            Create a new folder named <code>favorite-colors/</code> in the
+            <code>pages/</code> directory, and add a new file named
+            <code>index.tsx</code> inside that folder.
+          </p>
+          <p>
+            <code>~/ROBOT/my-app $ mkdir ./src/pages/favorite-colors</code>
+            <code>~/ROBOT/my-app $ touch ./src/pages/favorite-colors/index.tsx</code>
+          </p>
+          <p>
+            Delete the <code>src/styles/globals.css</code> file, we don't need it
+            anymore. Remove its import from <code>src/pages/_app.tsx</code>:
+          </p>
+          <pre><code>import '@/styles/globals.css' // delete me
+import type { AppProps } from 'next/app'
+
+export default function App({ Component, pageProps }: AppProps) {
+  return &lt;Component {...pageProps} /&gt;
+}</code></pre>
+
+          <p>At this point, your <code>src/</code> folder will look something like this:</p>
+          <pre>src
+├─ <b>pages</b>
+│  ├─ _app.tsx
+│  ├─ _document.tsx
+│  ├─ index.tsx
+│  ├─ api
+│  │  └─ hello.ts
+│  <b>└─ favorite-colors</b>
+│     <b>└─ index.tsx</b>
+└─ styles
+   ├─ Home.module.css
+   └─ globals.css</pre>
+
+          <p>Let's add some important information to the page:</p>
+          <pre><code>// src/pages/favorite-colors/index.tsx
+
+import Head from "next/head";
+import Link from "next/link";
+
+const MyFavoriteColors = () =&gt; (
+  &lt;&gt;
+    &lt;Head&gt;
+      &lt;title&gt;My Favorite Colors&lt;/title&gt;
+      &lt;meta
+        name="description"
+        content="These are some of my favorite colors!"
+      /&gt;
+    &lt;/Head&gt;
+    &lt;Link href="https://www.britannica.com/science/color"&gt;
+      What are colors?
+    &lt;/Link&gt;
+    &lt;p&gt;My favorite colors are:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Pink&lt;/li&gt;
+      &lt;li&gt;+&lt;/li&gt;
+      &lt;li&gt;White&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/&gt;
+);
+
+export default MyFavoriteColors;</code></pre>
+          <p><img src="/images/blog/pink_white.png" alt="Favorite colors screenshot" style="width: 30%; margin-bottom: 0" loading="lazy" /></p>
+          <p class="note">impressive, no?</p>
+
+          <p>We've introduced a few new concepts here:</p>
+
+          <h4>A new <a href="https://nextjs.org/docs/routing/introduction#index-routes">index route</a></h4>
+          <p>
+            Creating a file at <code>pages/favorite-colors/index.tsx</code> tells
+            Next.js to create a new page for this route. Go to
+            <code>localhost:3000/favorite-colors</code>, and you'll see your
+            beautiful new page. Note that you are viewing the component that is
+            <strong>default exported</strong> from the index file.
+          </p>
+
+          <h4><a href="https://nextjs.org/docs/api-reference/next/head"><code>&lt;Head&gt;</code></a></h4>
+          <p>
+            Append elements to the <code>&lt;head&gt;</code> of the page,
+            anywhere. Useful for stuff like page titles, descriptions, and much
+            more.
+          </p>
+
+          <h4><a href="https://nextjs.org/docs/api-reference/next/link"><code>&lt;Link&gt;</code></a></h4>
+          <p>
+            Handles client-side link transitions. You should always use this
+            component for links in Next.js apps, unless you have a good reason
+            not to (they probably exist, but I can't think of any right now).
+          </p>
+
+          <h3>Editing the home page</h3>
+          <p>
+            Let's go back to the <code>pages/index.tsx</code> file. Open it up,
+            and you'll see that it contains the code for our default Next.js
+            homepage.
+          </p>
+          <p>
+            <strong>The component that is default exported from this file will
+            be rendered as the home page</strong>. That's because
+            <code>pages/index.tsx</code> is the index file in the root of the
+            <code>pages/</code> folder.
+          </p>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <ul>
+          <li><a href="https://github.com/lukebelliveau">github</a></li>
+          <li><a href="https://www.linkedin.com/in/lukebelliveau/">linkedin</a></li>
+          <li><a href="mailto:hi@lukebelliveau.dev">hi@lukebelliveau.dev</a></li>
+        </ul>
+        <span>© 2026 Luke Belliveau</span>
+      </footer>
+    </div>
+  </body>
+</html>
