@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Luke Belliveau - CV</title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.5in 0.6in;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #000;
+        font: 400 9.25pt/1.38 -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Helvetica, Arial, sans-serif;
+        -webkit-print-color-adjust: exact;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .muted {
+        color: #595959;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 20pt;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      header .role {
+        margin: 2pt 0 0;
+        font-size: 11pt;
+      }
+
+      header .contact {
+        margin: 4pt 0 0;
+      }
+
+      .summary {
+        margin: 10pt 0 0;
+      }
+
+      h2 {
+        break-after: avoid;
+        margin: 13pt 0 5pt;
+        font-size: 11pt;
+        font-weight: 700;
+      }
+
+      .entry {
+        margin: 0 0 10pt;
+        break-inside: avoid;
+      }
+
+      /* the Navalia block holds several engagements and must be allowed to
+         break across pages; each engagement still stays together */
+      .entry:has(.engagements) {
+        break-inside: auto;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
+      }
+
+      .entry-head h3 {
+        margin: 0;
+        font-size: 10pt;
+        font-weight: 650;
+      }
+
+      .entry-head .when {
+        flex: none;
+        color: #595959;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .entry .sub {
+        margin: 1pt 0 0;
+        color: #595959;
+      }
+
+      .engagements {
+        margin: 6pt 0 0;
+        padding-left: 10pt;
+      }
+
+      .engagements .entry {
+        margin-bottom: 9pt;
+      }
+
+      ul {
+        margin: 3pt 0 0;
+        padding-left: 12pt;
+      }
+
+      li {
+        margin: 0 0 1.5pt;
+      }
+
+      .tech {
+        margin: 3pt 0 0;
+        color: #595959;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: 9.5em 1fr;
+        gap: 2pt 10pt;
+        margin: 0;
+      }
+
+      .skills dt {
+        font-weight: 650;
+      }
+
+      .skills dd {
+        margin: 0;
+      }
+
+      .projects p {
+        margin: 0 0 3pt;
+      }
+
+      /* screen preview: show the page as a sheet */
+      @media screen {
+        html {
+          background: #e6e6e6;
+        }
+
+        body {
+          width: 8.5in;
+          min-height: 11in;
+          margin: 24px auto;
+          padding: 0.55in 0.6in;
+          background: #fff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Luke Belliveau</h1>
+      <p class="role">Platform Engineer</p>
+      <p class="contact muted">
+        Barcelona / Boston ·
+        <a href="https://www.lukebelliveau.dev">lukebelliveau.dev</a> ·
+        <a href="https://github.com/lukebelliveau">github.com/lukebelliveau</a> ·
+        <a href="https://www.linkedin.com/in/lukebelliveau/">linkedin.com/in/lukebelliveau</a> ·
+        <a href="mailto:hi@lukebelliveau.dev">hi@lukebelliveau.dev</a>
+      </p>
+    </header>
+
+    <p class="summary">
+      Platform engineer with a decade of experience building systems at
+      enterprise scale. Builds the platforms product teams build on: delivery
+      platforms, cloud infrastructure, data platforms and the developer tooling
+      around them.
+    </p>
+
+    <h2>Experience</h2>
+
+    <section class="entry">
+      <div class="entry-head">
+        <h3>Navalia</h3>
+        <span class="when">2023 – Present</span>
+      </div>
+      <p class="sub">Consultant Software Engineer</p>
+
+      <div class="engagements">
+        <section class="entry">
+          <div class="entry-head">
+            <h3>Agentic Infrastructure Platform</h3>
+            <span class="when">2025 – Present</span>
+          </div>
+          <ul>
+            <li>
+              Building a developer "platform in a box": a single installation
+              sets up cloud infrastructure, Kubernetes clusters, CI/CD
+              pipelines, GitOps, logging and alerting inside the organization's
+              own cloud accounts.
+            </li>
+            <li>
+              Teams describe each application in one manifest file. The
+              platform provisions its databases, caches, message queues and
+              secrets, and generates a pipeline that tests, security scans and
+              deploys every push through dev, staging and production, with
+              approval gates and runtime verification.
+            </li>
+            <li>
+              Built an AI engineering agent into the platform that investigates
+              alerts across code, builds, logs and live systems, then prepares,
+              tests and opens fixes as pull requests for review.
+            </li>
+          </ul>
+          <p class="tech">
+            TypeScript, Python, Terraform, Kubernetes, Argo CD, GCP, AWS,
+            Buildkite, Harness, Claude
+          </p>
+        </section>
+
+        <section class="entry">
+          <div class="entry-head">
+            <h3>Gamification Platform</h3>
+            <span class="when">2025 – 2026</span>
+          </div>
+          <ul>
+            <li>
+              Designed, built and launched the dual-region GCP/GKE platform
+              behind a large enterprise's gamification product.
+            </li>
+            <li>
+              App teams declare what they need in a single YAML file. Across 7
+              production services, every push to main runs tests, security
+              scans, image builds, provisioning, deployment and end-to-end
+              tests.
+            </li>
+            <li>
+              Migrated the platform onto the enterprise's shared multi-tenant
+              clusters, Istio mesh, policy gates and security scanners with zero
+              downtime and no changes required from app teams.
+            </li>
+            <li>
+              Launch week (June 2026): 5.8M requests at 99.986% success, peaking
+              at 9,850 requests per minute, across 97,016 game sessions from
+              89,792 unique customers.
+            </li>
+          </ul>
+          <p class="tech">
+            Terraform, GCP, GKE, Istio, Harness, Argo CD, Helm, Cloud SQL,
+            Python, FastAPI
+          </p>
+        </section>
+
+        <section class="entry">
+          <div class="entry-head">
+            <h3>Path Robotics · Robotics Data Platform</h3>
+            <span class="when">2024 – 2025</span>
+          </div>
+          <ul>
+            <li>
+              Led architecture of a domain-driven data platform for autonomous
+              welding robots that generate laser-scanner point clouds, 3D models
+              and sensor data.
+            </li>
+            <li>
+              Replaced tightly coupled pipelines with independently owned data
+              domains, consumer-specific API contracts, and route-level access
+              approved by each domain's owner.
+            </li>
+            <li>
+              Built an edge proxy with write buffering and read caching, so
+              factory floors keep operating offline and sync to the cloud as
+              bandwidth allows.
+            </li>
+            <li>
+              Moved AI training and robot operations from overnight batch jobs
+              to real-time data, cut mean time to discover and resolve incidents
+              by 80%, and designed for a 100x increase in data volume.
+            </li>
+          </ul>
+          <p class="tech">
+            Python, FastAPI, PostgreSQL, RabbitMQ, Terraform, AWS, GitHub Actions
+          </p>
+        </section>
+
+        <section class="entry">
+          <div class="entry-head">
+            <h3>Wendy's · Web Ordering Platform</h3>
+            <span class="when">2023 – 2024</span>
+          </div>
+          <ul>
+            <li>
+              Full stack engineer on the web ordering platform for Wendy's
+              7,000+ restaurants.
+            </li>
+            <li>
+              Liaison between web and platform engineering during the AWS to GCP
+              migration: dual-repository sync, single-image multi-environment
+              deployments with runtime configuration, and GitOps with Argo CD.
+            </li>
+            <li>
+              Contributed to FreshAI, Wendy's AI drive-thru ordering system,
+              which processes tens of thousands of orders daily.
+            </li>
+            <li>
+              Kickstarted a Next.js 14 rewrite of the 318K-line ordering
+              application, introducing Server Components, Zustand and
+              domain-driven architecture.
+            </li>
+          </ul>
+          <p class="tech">
+            React, Next.js, TypeScript, Redux, Zustand, Docker, Kubernetes, Argo
+            CD, GitLab CI, GCP
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="entry-head">
+        <h3>NuWave Technologies</h3>
+        <span class="when">2021 – 2023</span>
+      </div>
+      <p class="sub">Consultant Software Engineer</p>
+      <ul>
+        <li>
+          Led development of the Prizm API Gateway management console on a team
+          of three, from inception to launch.
+        </li>
+        <li>
+          Migrated the LightWave Client and Server products from AngularJS to
+          React, reducing source code by 35%.
+        </li>
+        <li>
+          Built automated testing pipelines and ran training that raised
+          front-end code coverage from 0% to over 95%.
+        </li>
+      </ul>
+    </section>
+
+    <section class="entry">
+      <div class="entry-head">
+        <h3>ZUUT</h3>
+        <span class="when">2020 – Present</span>
+      </div>
+      <p class="sub">Technical Partner</p>
+      <ul>
+        <li>
+          Built a browser-based CAD tool for planning cannabis grow operations
+          from inception to launch, including a canvas interaction and
+          collision engine for 100+ items (Redux, Firebase).
+        </li>
+        <li>
+          Added account management, Amazon affiliate equipment comparison and
+          Contentful publishing.
+        </li>
+      </ul>
+    </section>
+
+    <section class="entry">
+      <div class="entry-head">
+        <h3>Grubhub</h3>
+        <span class="when">2018 – 2020</span>
+      </div>
+      <p class="sub">Senior Cloud Infrastructure Engineer</p>
+      <ul>
+        <li>
+          Owned the notifications microservices (SMS, push, email, fax) for
+          500K+ daily active users (Java, Spring).
+        </li>
+        <li>
+          Extended the core Java service framework for communication in a new
+          Envoy service mesh.
+        </li>
+        <li>
+          Designed the architecture for a new notifications platform, approved
+          by the org-wide architecture review council.
+        </li>
+        <li>
+          Built a React and Python tool for SREs to view system status and make
+          changes during outages.
+        </li>
+      </ul>
+    </section>
+
+    <section class="entry">
+      <div class="entry-head">
+        <h3>ThoughtWorks</h3>
+        <span class="when">2016 – 2018</span>
+      </div>
+      <p class="sub">Senior Software Engineer, Associate Software Engineer</p>
+      <ul>
+        <li>
+          Delivered client software in health insurance, e-commerce and
+          cybersecurity, including a React and Java insurance portal, a Vue
+          analytics dashboard, and data pipelines for Kroger's e-commerce
+          platform.
+        </li>
+        <li>
+          Built a Go backend-for-frontend that aggregated and transformed logs
+          before serving them to the client.
+        </li>
+        <li>
+          Ran front-end training and a global community of React and Vue
+          developers, and mentored new hires.
+        </li>
+      </ul>
+    </section>
+
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt>
+      <dd>Python, TypeScript, JavaScript, Kotlin, Java, Go, SQL</dd>
+      <dt>Infrastructure</dt>
+      <dd>Terraform, Kubernetes, Helm, Istio, Docker, GCP, AWS</dd>
+      <dt>Delivery</dt>
+      <dd>Buildkite, Argo CD, GitHub Actions, GitLab CI, Harness, Jenkins, Spinnaker</dd>
+      <dt>Data</dt>
+      <dd>PostgreSQL, RabbitMQ, Cassandra, MongoDB, Firebase</dd>
+      <dt>Backend &amp; web</dt>
+      <dd>FastAPI, Spring Boot, React, Next.js, Redux, Zustand</dd>
+      <dt>Testing &amp; tracing</dt>
+      <dd>pytest, Vitest, Jest, JUnit, Playwright, Cypress, OpenTelemetry</dd>
+    </dl>
+
+    <h2>Projects</h2>
+    <div class="projects">
+      <p>
+        <strong>Selenium.dev</strong> <span class="muted">2019</span> · New
+        website for the browser automation project, built with Jekyll and Hugo.
+      </p>
+      <p>
+        <strong>Devil's Dice</strong> <span class="muted">2018</span> · Mobile
+        party game; 10,000+ downloads and a 4.5-star rating on Google Play.
+      </p>
+      <p>
+        <strong>SATURATION</strong> <span class="muted">2017</span> · Official
+        BROCKHAMPTON app for early releases; 10,000+ downloads and a 5-star
+        rating.
+      </p>
+    </div>
+
+    <h2>Education</h2>
+    <section class="entry">
+      <div class="entry-head">
+        <h3>B.S. Computer Science, University of Connecticut</h3>
+        <span class="when">2011 – 2016</span>
+      </div>
+    </section>
+  </body>
+</html>

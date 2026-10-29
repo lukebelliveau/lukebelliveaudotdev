@@ -21,6 +21,24 @@ site through a server rather than as files.
 - The header and footer are repeated in each page. Change them everywhere when
   editing navigation.
 
+## CV
+
+The CV source is `cv/index.html`. After editing, regenerate the PDF used by
+the site's CV links. From the repository root on macOS with Chrome installed:
+
+```sh
+cv_profile_dir=$(mktemp -d "${TMPDIR:-/tmp}/cv-print.XXXXXX")
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --no-first-run --no-default-browser-check \
+  --user-data-dir="$cv_profile_dir" --no-pdf-header-footer \
+  --print-to-pdf="$PWD/site/files/Luke_Belliveau_CV.pdf" \
+  "file://$PWD/cv/index.html"
+```
+
+Open the generated PDF and check that it remains two pages with no clipped
+text or awkward breaks before publishing. The source sets US Letter paper
+and print margins; browser headers and footers are disabled by the command.
+
 ## Deployment
 
 Pushing to main runs `.github/workflows/pages.yml`, which uploads `site/` to
